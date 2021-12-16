@@ -3,10 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { configureStore } from '@reduxjs/toolkit';
+import productReducer from './features/productReducer';
+import { Provider } from 'react-redux';
+import holdReducer from './features/holdReducer';
+
+const store = configureStore({
+  reducer: {
+    products: productReducer,
+    hold: holdReducer,
+  }
+})
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
