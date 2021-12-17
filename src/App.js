@@ -15,6 +15,8 @@ import UsersOrder from './pages/Dashboard/Orders/UsersOrder/UsersOrder';
 import Payment from './pages/Dashboard/Payment/Payment';
 import Login from './pages/Login/Login/Login';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
+import AdminRoute from './pages/Login/AdminRoute/AdminRoute';
+import AddProduct from './pages/Dashboard/AdminPanel/AddProduct/AddProduct';
 
 
 function App() {
@@ -37,7 +39,18 @@ function App() {
                 <UsersOrder />
               </PrivateRoute>} />
 
-            <Route path="payment" element={<Payment />} />
+            <Route path="payment" element={
+              <PrivateRoute>
+                <Payment />
+              </PrivateRoute>
+            } />
+
+            <Route path="addProduct" element={
+              <AdminRoute>
+                <AddProduct />
+              </AdminRoute>
+            } />
+
           </Route>
 
           <Route path="login" element={<Login />} />

@@ -1,8 +1,10 @@
 import React from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import useFirebase from '../../../../hooks/useFirebase';
 
 const Navigation = () => {
+    const { user, logOut, admin } = useFirebase();
     return (
         <Navbar sticky="top" collapseOnSelect expand="lg" bg="primary" variant="dark" >
             <Container>
@@ -20,24 +22,44 @@ const Navigation = () => {
                         <LinkContainer to="products">
                             <Nav.Link>Products</Nav.Link>
                         </LinkContainer>
-
-                        <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
-                            <LinkContainer to="/dashboard/usersOrder">
-                                <NavDropdown.Item>My Orders</NavDropdown.Item>
-                            </LinkContainer>
-                            <LinkContainer to="/dashboard/payment">
-                                <NavDropdown.Item>Payment</NavDropdown.Item>
-                            </LinkContainer>
-                        </NavDropdown>
-
+                        {
+                            admin ?
+                                <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
+                                    <LinkContainer to="/dashboard/addProduct">
+                                        <NavDropdown.Item>Add Product</NavDropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to="/dashboard/payment">
+                                        <NavDropdown.Item>Payment</NavDropdown.Item>
+                                    </LinkContainer>
+                                </NavDropdown>
+                                :
+                                <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
+                                    <LinkContainer to="/dashboard/usersOrder">
+                                        <NavDropdown.Item>My Orders</NavDropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to="/dashboard/payment">
+                                        <NavDropdown.Item>Payment</NavDropdown.Item>
+                                    </LinkContainer>
+                                </NavDropdown>
+                        }
                     </Nav>
+
                     <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
-                        <LinkContainer to="login">
-                            <Nav.Link>
-                                Login
-                            </Nav.Link>
-                        </LinkContainer>
+                        {
+                            user.email ?
+                                <Button variant='warning' size="sm"
+                                    onClick={() => logOut()}>
+                                    Logout
+                                </Button>
+                                :
+                                <LinkContainer to="login">
+                                    <Nav.Link>
+                                        <Button variant='primary' size='sm'>
+                                            Login
+                                        </Button>
+                                    </Nav.Link>
+                                </LinkContainer>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>

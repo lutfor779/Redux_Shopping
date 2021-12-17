@@ -9,16 +9,21 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
+    const [admin, setAdmin] = useState(false);
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
 
+    // google signIn method implement
     const signInWithGoogle = (location, navigate) => {
         setIsLoading(true);
         signInWithPopup(auth, googleProvider)
             .then(result => {
                 setUser(result.user);
                 setError('');
+
+                // save user data to database
+                saveUser(result.user.email, result.user.displayName, 'PUT');
 
                 // redirect url
                 const from = location?.state?.from || '/';
@@ -30,6 +35,8 @@ const useFirebase = () => {
             .finally(setIsLoading(false));
     }
 
+
+    // handle login system when re-use website
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -44,6 +51,16 @@ const useFirebase = () => {
         return () => unsubscribe();
     }, [auth]);
 
+
+    // check admin after logIn
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin));
+    }, [user.email]);
+
+
+    // handle singOut user
     const logOut = () => {
         setIsLoading(true);
         signOut(auth)
@@ -57,10 +74,25 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false))
     }
 
+
+    // save user details when login successfully
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+    }
+
+
     return {
         user,
         error,
         isLoading,
+        admin,
         setUser,
         setError,
         signInWithGoogle,
