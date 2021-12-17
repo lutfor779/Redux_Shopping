@@ -7,11 +7,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import productReducer from './features/productReducer';
 import { Provider } from 'react-redux';
 import holdReducer from './features/holdReducer';
+import orderReducer from './features/orderReducer';
 
 const store = configureStore({
   reducer: {
     products: productReducer,
     hold: holdReducer,
+    orders: orderReducer,
   }
 })
 

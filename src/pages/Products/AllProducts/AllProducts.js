@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { Container, Row, Spinner } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { loading } from '../../../features/holdReducer';
 import { allProducts } from '../../../features/productReducer';
+import Loading from '../../Shared/Loading/Loading';
 import Product from '../Product/Product';
 
 const AllProducts = () => {
@@ -21,15 +22,10 @@ const AllProducts = () => {
 
     return (
         isLoading ?
-            <div style={{ height: "100vh", justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
-                <strong className='fs-2'>Loading</strong>
-                <Spinner animation="grow" variant="danger" size="sm" />
-                <Spinner animation="grow" variant="warning" size="sm" />
-                <Spinner animation="grow" variant="success" size="sm" />
-            </div>
+            <Loading />
             :
             <Container>
-                <Row xs={1} md={2} lg={3} xll={4} className="g-4">
+                <Row xs={1} md={2} lg={3} className="g-4">
                     {
                         products.map(product => <Product key={product._id} product={product} />)
                     }

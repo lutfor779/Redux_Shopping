@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter,
   Routes,
@@ -9,8 +10,9 @@ import AllProducts from './pages/Products/AllProducts/AllProducts';
 import TargetProduct from './pages/Products/TargetProduct/TargetProduct';
 import NotFound from './pages/Shared/NotFound/NotFound';
 import Header from './pages/Shared/Header/Header';
-import AddProduct from './pages/AdminPanel/AddProduct/AddProduct';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import DashboardHome from './pages/Dashboard/DashboardHome/DashboardHome';
+import UsersOrder from './pages/Dashboard/Orders/UsersOrder/UsersOrder';
+import Payment from './pages/Dashboard/Payment/Payment';
 
 
 function App() {
@@ -25,7 +27,10 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="products" element={<AllProducts />} />
           <Route path="products/product/:productId" element={<TargetProduct />} />
-          <Route path="addProduct" element={<AddProduct />} />
+          <Route path="dashboard" element={<DashboardHome />} >
+            <Route path="usersOrder" element={<UsersOrder />} />
+            <Route path="payment" element={<Payment />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

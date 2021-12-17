@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const Navigation = () => {
@@ -20,9 +20,20 @@ const Navigation = () => {
                         <LinkContainer to="products">
                             <Nav.Link>Products</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="addProduct">
-                            <Nav.Link>Add Product</Nav.Link>
-                        </LinkContainer>
+                        {/* <LinkContainer to="dashboard">
+                            <Nav.Link>Dashboard</Nav.Link>
+                        </LinkContainer> */}
+
+                        {/* asdfdf */}
+                        <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
+                            <LinkContainer to="/dashboard/usersOrder">
+                                <NavDropdown.Item>My Orders</NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/dashboard/payment">
+                                <NavDropdown.Item>Payment</NavDropdown.Item>
+                            </LinkContainer>
+                        </NavDropdown>
+                        {/* lsadf */}
                     </Nav>
                     <Nav>
                         <Nav.Link href="#deets">More deets</Nav.Link>
