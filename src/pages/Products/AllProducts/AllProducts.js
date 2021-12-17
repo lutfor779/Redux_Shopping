@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { loading } from '../../../features/holdReducer';
-import { allProducts } from '../../../features/productReducer';
+import { loading } from '../../../features/reducers/holdReducer';
+import { allProducts } from '../../../features/reducers/productReducer';
 import Loading from '../../Shared/Loading/Loading';
 import Product from '../Product/Product';
 

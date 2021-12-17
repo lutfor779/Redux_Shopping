@@ -3,7 +3,7 @@ import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { removeProduct, singleProduct } from '../../../features/productReducer';
+import { removeProduct, singleProduct } from '../../../features/reducers/productReducer';
 import Cart from '../../Shared/Cart/Cart';
 
 const TargetProduct = () => {

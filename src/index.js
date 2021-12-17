@@ -3,19 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { configureStore } from '@reduxjs/toolkit';
-import productReducer from './features/productReducer';
 import { Provider } from 'react-redux';
-import holdReducer from './features/holdReducer';
-import orderReducer from './features/orderReducer';
-
-const store = configureStore({
-  reducer: {
-    products: productReducer,
-    hold: holdReducer,
-    orders: orderReducer,
-  }
-})
+import store from './features/store/store';
 
 
 ReactDOM.render(

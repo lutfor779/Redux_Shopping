@@ -20,11 +20,7 @@ const Navigation = () => {
                         <LinkContainer to="products">
                             <Nav.Link>Products</Nav.Link>
                         </LinkContainer>
-                        {/* <LinkContainer to="dashboard">
-                            <Nav.Link>Dashboard</Nav.Link>
-                        </LinkContainer> */}
 
-                        {/* asdfdf */}
                         <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
                             <LinkContainer to="/dashboard/usersOrder">
                                 <NavDropdown.Item>My Orders</NavDropdown.Item>
@@ -33,13 +29,15 @@ const Navigation = () => {
                                 <NavDropdown.Item>Payment</NavDropdown.Item>
                             </LinkContainer>
                         </NavDropdown>
-                        {/* lsadf */}
+
                     </Nav>
                     <Nav>
                         <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
+                        <LinkContainer to="login">
+                            <Nav.Link>
+                                Login
+                            </Nav.Link>
+                        </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
