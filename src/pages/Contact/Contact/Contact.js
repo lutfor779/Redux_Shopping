@@ -30,18 +30,18 @@ const Contact = () => {
                                 <Card.Text>
                                     Phone: +880 1793 054 198
                                 </Card.Text>
-                                <Card.Text className="text mt-5">
+                                {/* <Card.Text className="text mt-5">
                                     Find With Me
                                 </Card.Text>
                                 <Card.Link href="https://www.linkedin.com/in/md-lutfor-rahman-1b78a9216/" target="_blanck">
                                     <i className="fab fa-linkedin"></i>
                                 </Card.Link>
                                 <Card.Link href="https://github.com/lutfor779" target="_blanck">
-                                    <i className="fab fa-github"></i>
+                                    <i className="bi bi-github"></i>
                                 </Card.Link>
                                 <Card.Link href="https://www.facebook.com/profile.php?id=100060296948064" target="_blanck">
                                     <i className="fab fa-facebook"></i>
-                                </Card.Link>
+                                </Card.Link> */}
                             </Card.Body>
                         </Card>
                     </Col>

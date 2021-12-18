@@ -16,7 +16,7 @@ const Banner = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="https://thumbs.dreamstime.com/b/sale-shop-happy-girl-woman-buy-cartoon-clothes-vector-illustration-female-customer-character-fashion-store-discount-retail-215329109.jpg"
+                    src="https://static.vecteezy.com/system/resources/previews/000/669/988/non_2x/vector-shopping-online-banner.jpg"
                     alt="Second slide"
                     height={480}
                 />

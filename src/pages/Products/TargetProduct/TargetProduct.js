@@ -75,9 +75,9 @@ const TargetProduct = () => {
                         </Row>
                     </Card>
                 </Col>
-                <Col xs={12} md={4} lg={3}>
+                {/* <Col xs={12} md={4} lg={3}>
                     <Cart />
-                </Col>
+                </Col> */}
             </Row>
         </Container>
     );
