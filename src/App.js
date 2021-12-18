@@ -19,6 +19,7 @@ import AdminRoute from './pages/Login/AdminRoute/AdminRoute';
 import AddProduct from './pages/Dashboard/AdminPanel/AddProduct/AddProduct';
 import AllOrders from './pages/Dashboard/AdminPanel/AllOrders/AllOrders';
 import AuthProvider from './context/AuthProvider';
+import ManageProducts from './pages/Dashboard/AdminPanel/ManageProducts/ManageProducts';
 
 
 function App() {
@@ -53,6 +54,10 @@ function App() {
 
               <Route path="orders" element={
                 <AdminRoute><AllOrders /></AdminRoute>
+              } />
+
+              <Route path="products" element={
+                <AdminRoute><ManageProducts /></AdminRoute>
               } />
 
             </Route>

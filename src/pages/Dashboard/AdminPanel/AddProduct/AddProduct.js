@@ -49,7 +49,8 @@ const AddProduct = () => {
             <Container>
                 <Form
                     onSubmit={handleSubmit}
-                    className="py-4 w-md-50 mx-auto bg-light p-5 text-start">
+                    style={{ maxWidth: '576px' }}
+                    className="py-4 mx-auto bg-light p-5 text-start">
 
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Title</Form.Label>

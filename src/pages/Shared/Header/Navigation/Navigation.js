@@ -28,12 +28,14 @@ const Navigation = () => {
                             </LinkContainer>
                             {
                                 admin ?
-                                    <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
+                                    <NavDropdown title="Dashboard" id="collasible-nav-dropdown">                             <LinkContainer to="/dashboard/orders">
+                                        <NavDropdown.Item>Manage Orders</NavDropdown.Item>
+                                    </LinkContainer>
+                                        <LinkContainer to="/dashboard/products">
+                                            <NavDropdown.Item>Manage Products</NavDropdown.Item>
+                                        </LinkContainer>
                                         <LinkContainer to="/dashboard/addProduct">
                                             <NavDropdown.Item>Add Product</NavDropdown.Item>
-                                        </LinkContainer>
-                                        <LinkContainer to="/dashboard/orders">
-                                            <NavDropdown.Item>All Orders</NavDropdown.Item>
                                         </LinkContainer>
                                     </NavDropdown>
                                     :

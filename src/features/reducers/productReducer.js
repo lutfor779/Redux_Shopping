@@ -4,6 +4,7 @@ const initialStateValue = {
     allProducts: [],
     singleProduct: [],
     addingProductData: {},
+    update: false,
 }
 export const productsSlice = createSlice({
     name: 'products',
@@ -21,8 +22,11 @@ export const productsSlice = createSlice({
         removeProduct: state => {
             state.value.singleProduct = [];
         },
+        update: (state, action) => {
+            state.value.update = action.payload;
+        }
     },
 });
 
-export const { allProducts, singleProduct, addingProductData, removeProduct } = productsSlice.actions;
+export const { allProducts, singleProduct, addingProductData, removeProduct, update } = productsSlice.actions;
 export default productsSlice.reducer;

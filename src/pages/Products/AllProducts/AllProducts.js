@@ -10,6 +10,8 @@ import Product from '../Product/Product';
 const AllProducts = () => {
     const products = useSelector(state => state.products.value.allProducts);
     const isLoading = useSelector((state) => state.hold.value.loading);
+    const isUpdate = useSelector(state => state.products.value.update);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,9 +20,8 @@ const AllProducts = () => {
             .then(res => res.json())
             .then(data => dispatch(allProducts(data)))
             .finally(dispatch(loading(false)));
-    }, [dispatch]);
+    }, [dispatch, isUpdate]);
 
-    // console.log(isLoading)
     return (
         isLoading ?
             <Loading />
