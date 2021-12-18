@@ -17,7 +17,7 @@ const Order = ({ order }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${productId}`)
+        fetch(`https://fierce-ocean-20596.herokuapp.com/products/${productId}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [productId]);
@@ -26,7 +26,7 @@ const Order = ({ order }) => {
     const handleAccept = (id) => {
         const updateStatus = { status: 'Approved' };
 
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://fierce-ocean-20596.herokuapp.com/orders/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -46,7 +46,7 @@ const Order = ({ order }) => {
         const confirm = window.confirm('Want to Delete this item?');
 
         if (confirm) {
-            fetch(`http://localhost:5000/orders/${id}`, {
+            fetch(`https://fierce-ocean-20596.herokuapp.com/orders/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

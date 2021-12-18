@@ -20,7 +20,7 @@ const ManageProduct = ({ product }) => {
     }
 
     const handleUpdate = (id) => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://fierce-ocean-20596.herokuapp.com/products/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -42,7 +42,7 @@ const ManageProduct = ({ product }) => {
         const confirm = window.confirm('Want to delete this item?');
 
         if (confirm) {
-            fetch(`http://localhost:5000/products/${id}`, {
+            fetch(`https://fierce-ocean-20596.herokuapp.com/products/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

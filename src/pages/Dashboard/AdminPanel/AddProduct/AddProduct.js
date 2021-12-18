@@ -25,7 +25,7 @@ const AddProduct = () => {
     const handleSubmit = e => {
         e.preventDefault();
         dispatch(loading(true));
-        fetch('http://localhost:5000/products', {
+        fetch('https://fierce-ocean-20596.herokuapp.com/products', {
             method: 'POST',
             headers: {
                 'content-type': "application/json"

@@ -16,7 +16,7 @@ const TargetProduct = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${productId}`)
+        fetch(`https://fierce-ocean-20596.herokuapp.com/products/${productId}`)
             .then(res => res.json())
             .then(data => dispatch(singleProduct(data)))
         dispatch(removeProduct());
@@ -31,7 +31,7 @@ const TargetProduct = () => {
             price: product.price
         };
 
-        fetch(`http://localhost:5000/orders`, {
+        fetch(`https://fierce-ocean-20596.herokuapp.com/orders`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

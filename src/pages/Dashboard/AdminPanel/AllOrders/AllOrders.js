@@ -13,7 +13,7 @@ const AllOrders = () => {
 
     useEffect(() => {
         dispatch(loading(true));
-        fetch('http://localhost:5000/orders')
+        fetch('https://fierce-ocean-20596.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => {
                 dispatch(allOrders(data));
