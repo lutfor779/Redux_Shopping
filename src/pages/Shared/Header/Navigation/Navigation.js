@@ -13,7 +13,7 @@ const Navigation = () => {
             <Navbar sticky="top" collapseOnSelect expand="lg" bg="primary" variant="dark" >
                 <Container>
                     <LinkContainer to="/">
-                        <Navbar.Brand>React-Bootstrap</Navbar.Brand >
+                        <Navbar.Brand>Redux Store</Navbar.Brand >
                     </LinkContainer >
 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -48,6 +48,9 @@ const Navigation = () => {
                                         </LinkContainer>
                                     </NavDropdown>
                             }
+                            <LinkContainer to="contact">
+                                <Nav.Link>Contact Me</Nav.Link>
+                            </LinkContainer>
                         </Nav>
 
                         <Nav>

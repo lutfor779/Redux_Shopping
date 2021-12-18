@@ -10,7 +10,7 @@ const ManageProducts = () => {
 
     useEffect(() => {
         if (products.length < 1) {
-            navigate('/products');
+            navigate('/');
         }
     }, [products, navigate])
 

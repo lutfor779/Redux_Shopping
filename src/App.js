@@ -20,6 +20,8 @@ import AddProduct from './pages/Dashboard/AdminPanel/AddProduct/AddProduct';
 import AllOrders from './pages/Dashboard/AdminPanel/AllOrders/AllOrders';
 import AuthProvider from './context/AuthProvider';
 import ManageProducts from './pages/Dashboard/AdminPanel/ManageProducts/ManageProducts';
+import Footer from './pages/Shared/Footer/Footer';
+import Contact from './pages/Contact/Contact/Contact';
 
 
 function App() {
@@ -28,43 +30,46 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Header />
-          <Routes>
-            <Route path="/" element={<Home />}>
-              <Route index element={<Home />} />
-            </Route>
-            <Route path="home" element={<Home />} />
-            <Route path="products" element={<AllProducts />} />
+          <main style={{ minHeight: "80vh" }}>
+            <Routes>
+              <Route path="/" element={<Home />}>
+                <Route index element={<Home />} />
+              </Route>
+              <Route path="home" element={<Home />} />
+              <Route path="products" element={<AllProducts />} />
 
-            <Route path="products/product/:productId" element={
-              <PrivateRoute><TargetProduct /></PrivateRoute>
-            } />
-
-            <Route path="dashboard" element={<DashboardHome />} >
-
-              <Route path="usersOrder" element={
-                <PrivateRoute><UsersOrder /></PrivateRoute>} />
-
-              <Route path="payment" element={
-                <PrivateRoute><Payment /></PrivateRoute>
+              <Route path="products/product/:productId" element={
+                <PrivateRoute><TargetProduct /></PrivateRoute>
               } />
 
-              <Route path="addProduct" element={
-                <AdminRoute><AddProduct /></AdminRoute>
-              } />
+              <Route path="dashboard" element={<DashboardHome />} >
 
-              <Route path="orders" element={
-                <AdminRoute><AllOrders /></AdminRoute>
-              } />
+                <Route path="usersOrder" element={
+                  <PrivateRoute><UsersOrder /></PrivateRoute>} />
 
-              <Route path="products" element={
-                <AdminRoute><ManageProducts /></AdminRoute>
-              } />
+                <Route path="payment" element={
+                  <PrivateRoute><Payment /></PrivateRoute>
+                } />
 
-            </Route>
+                <Route path="addProduct" element={
+                  <AdminRoute><AddProduct /></AdminRoute>
+                } />
 
-            <Route path="login" element={<Login />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+                <Route path="orders" element={
+                  <AdminRoute><AllOrders /></AdminRoute>
+                } />
+
+                <Route path="products" element={
+                  <AdminRoute><ManageProducts /></AdminRoute>
+                } />
+
+              </Route>
+              <Route path="contact" element={<Contact />} />
+              <Route path="login" element={<Login />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
         </BrowserRouter>
       </AuthProvider>
     </div>

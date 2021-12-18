@@ -1,26 +1,21 @@
 import React, { useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { loading } from '../../../features/reducers/holdReducer';
-import { allProducts } from '../../../features/reducers/productReducer';
+import { useNavigate } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
 import Product from '../Product/Product';
 
 const AllProducts = () => {
     const products = useSelector(state => state.products.value.allProducts);
     const isLoading = useSelector((state) => state.hold.value.loading);
-    const isUpdate = useSelector(state => state.products.value.update);
 
-    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(loading(true));
-        fetch('http://localhost:5000/products')
-            .then(res => res.json())
-            .then(data => dispatch(allProducts(data)))
-            .finally(dispatch(loading(false)));
-    }, [dispatch, isUpdate]);
+        if (products.length < 1) {
+            navigate('/');
+        }
+    }, [products, navigate]);
 
     return (
         isLoading ?
