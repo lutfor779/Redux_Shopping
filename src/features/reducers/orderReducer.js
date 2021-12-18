@@ -4,7 +4,7 @@ const initialStateValue = {
     allOrders: [],
 }
 export const ordersSlice = createSlice({
-    name: 'products',
+    name: 'orders',
     initialState: { value: initialStateValue },
     reducers: {
         allOrders: (state, action) => {

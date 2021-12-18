@@ -1,25 +1,25 @@
 import React, { useEffect } from 'react';
 import { Container, Table } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loading } from '../../../../features/reducers/holdReducer';
 import { allOrders } from '../../../../features/reducers/orderReducer';
-import useAuth from '../../../../hooks/useAuth';
 import Order from '../../Shared/Order/Order';
 
-const UsersOrder = () => {
+const AllOrders = () => {
     const orders = useSelector(state => state.orders.value.allOrders);
     const dispatch = useDispatch();
-    const { user } = useAuth();
 
     useEffect(() => {
         dispatch(loading(true));
-        fetch(`http://localhost:5000/orders?email=${user.email}`)
+        fetch('http://localhost:5000/orders')
             .then(res => res.json())
             .then(data => {
                 dispatch(allOrders(data));
                 dispatch(loading(false));
             });
-    }, [dispatch, user.email]);
+    }, [dispatch]);
+
     return (
         <Container>
             <Table striped bordered hover variant='dark' responsive>
@@ -41,4 +41,4 @@ const UsersOrder = () => {
     );
 };
 
-export default UsersOrder;
+export default AllOrders;

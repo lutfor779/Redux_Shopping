@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button, Spinner } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useFirebase from '../../../hooks/useFirebase';
+import useAuth from '../../../hooks/useAuth';
+
 
 const Login = () => {
-    const { signInWithGoogle, logOut, user, isLoading } = useFirebase();
+    const { signInWithGoogle, logOut, user, isLoading } = useAuth();
 
     const location = useLocation();
     const navigate = useNavigate();

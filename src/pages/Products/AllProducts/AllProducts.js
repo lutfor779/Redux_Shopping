@@ -13,13 +13,14 @@ const AllProducts = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(loading(true));
         fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => dispatch(allProducts(data)))
             .finally(dispatch(loading(false)));
     }, [dispatch]);
 
-
+    // console.log(isLoading)
     return (
         isLoading ?
             <Loading />

@@ -17,46 +17,51 @@ import Login from './pages/Login/Login/Login';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 import AdminRoute from './pages/Login/AdminRoute/AdminRoute';
 import AddProduct from './pages/Dashboard/AdminPanel/AddProduct/AddProduct';
+import AllOrders from './pages/Dashboard/AdminPanel/AllOrders/AllOrders';
+import AuthProvider from './context/AuthProvider';
 
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-          <Route path="home" element={<Home />} />
-          <Route path="products" element={<AllProducts />} />
-          <Route path="products/product/:productId" element={<TargetProduct />} />
+      <AuthProvider>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />}>
+              <Route index element={<Home />} />
+            </Route>
+            <Route path="home" element={<Home />} />
+            <Route path="products" element={<AllProducts />} />
 
-          <Route path="dashboard" element={<DashboardHome />} >
-
-            <Route path="usersOrder" element={
-              <PrivateRoute>
-                <UsersOrder />
-              </PrivateRoute>} />
-
-            <Route path="payment" element={
-              <PrivateRoute>
-                <Payment />
-              </PrivateRoute>
+            <Route path="products/product/:productId" element={
+              <PrivateRoute><TargetProduct /></PrivateRoute>
             } />
 
-            <Route path="addProduct" element={
-              <AdminRoute>
-                <AddProduct />
-              </AdminRoute>
-            } />
+            <Route path="dashboard" element={<DashboardHome />} >
 
-          </Route>
+              <Route path="usersOrder" element={
+                <PrivateRoute><UsersOrder /></PrivateRoute>} />
 
-          <Route path="login" element={<Login />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+              <Route path="payment" element={
+                <PrivateRoute><Payment /></PrivateRoute>
+              } />
+
+              <Route path="addProduct" element={
+                <AdminRoute><AddProduct /></AdminRoute>
+              } />
+
+              <Route path="orders" element={
+                <AdminRoute><AllOrders /></AdminRoute>
+              } />
+
+            </Route>
+
+            <Route path="login" element={<Login />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }

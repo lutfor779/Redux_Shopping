@@ -24,6 +24,7 @@ const AddProduct = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        dispatch(loading(true));
         fetch('http://localhost:5000/products', {
             method: 'POST',
             headers: {
