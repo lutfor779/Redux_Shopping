@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { loading } from '../../../../features/reducers/holdReducer';
 import { allOrders } from '../../../../features/reducers/orderReducer';
 import Order from '../../Shared/Order/Order';
+import Popup from '../../Shared/Popup/Popup';
 
 const AllOrders = () => {
     const orders = useSelector(state => state.orders.value.allOrders);
@@ -19,6 +20,11 @@ const AllOrders = () => {
                 dispatch(loading(false));
             });
     }, [dispatch]);
+
+
+    if (orders.length < 1) {
+        return (<Popup />);
+    }
 
     return (
         <Container>

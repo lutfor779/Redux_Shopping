@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
-import { Container, Table } from 'react-bootstrap';
+import { Alert, Container, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { loading } from '../../../../features/reducers/holdReducer';
 import { allOrders } from '../../../../features/reducers/orderReducer';
 import useAuth from '../../../../hooks/useAuth';
 import Order from '../../Shared/Order/Order';
+import Popup from '../../Shared/Popup/Popup';
 
 const UsersOrder = () => {
     const orders = useSelector(state => state.orders.value.allOrders);
     const dispatch = useDispatch();
     const { user } = useAuth();
+
+
 
     useEffect(() => {
         dispatch(loading(true));
@@ -20,6 +23,12 @@ const UsersOrder = () => {
                 dispatch(loading(false));
             });
     }, [dispatch, user.email]);
+
+
+    if (orders.length < 1) {
+        return (<Popup />);
+    }
+
     return (
         <Container>
             <Table striped bordered hover variant='dark' responsive>
