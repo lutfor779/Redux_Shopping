@@ -27,8 +27,8 @@ const UsersOrder = () => {
                     <tr>
                         <th style={{ minWidth: '200px' }}>Title</th>
                         <th>Price</th>
-                        <th style={{ minWidth: '250px' }}>Client</th>
-                        <th>Email</th>
+                        <th style={{ minWidth: '250px' }}>Status</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>

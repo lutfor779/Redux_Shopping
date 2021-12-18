@@ -29,6 +29,8 @@ const AllOrders = () => {
                         <th>Price</th>
                         <th style={{ minWidth: '250px' }}>Client</th>
                         <th>Email</th>
+                        <th>Status</th>
+                        <th>Verify</th>
                     </tr>
                 </thead>
                 <tbody>
